@@ -33,8 +33,8 @@
             this.columnHeaderKachel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderMap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderZommlevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBoxPfad = new System.Windows.Forms.TextBox();
             this.columnHeaderGröße = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textBoxPfad = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -62,6 +62,7 @@
             this.listViewKacheln.TabIndex = 1;
             this.listViewKacheln.UseCompatibleStateImageBehavior = false;
             this.listViewKacheln.View = System.Windows.Forms.View.Details;
+            this.listViewKacheln.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewKacheln_ColumnClick);
             // 
             // columnHeaderKachel
             // 
@@ -78,17 +79,17 @@
             this.columnHeaderZommlevel.Text = "Zoomlevel";
             this.columnHeaderZommlevel.Width = 70;
             // 
+            // columnHeaderGröße
+            // 
+            this.columnHeaderGröße.Text = "Verzeichnisgröße in MB";
+            this.columnHeaderGröße.Width = 140;
+            // 
             // textBoxPfad
             // 
             this.textBoxPfad.Location = new System.Drawing.Point(12, 455);
             this.textBoxPfad.Name = "textBoxPfad";
             this.textBoxPfad.Size = new System.Drawing.Size(537, 20);
             this.textBoxPfad.TabIndex = 2;
-            // 
-            // columnHeaderGröße
-            // 
-            this.columnHeaderGröße.Text = "Verzeichnisgröße in MB";
-            this.columnHeaderGröße.Width = 140;
             // 
             // Form1
             // 

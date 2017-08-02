@@ -11,13 +11,19 @@ using System.Windows.Forms;
 
 namespace Ortho4XP
 {
+
     public partial class Form1 : Form
     {
+        private ListViewColumnSorter lvwColumnSorter;
+
         public Form1()
         {
             InitializeComponent();
             textBoxPfad.Text = @"D:\X-Plane Dinge\Tools\Ortho4XP\Tiles";
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listViewKacheln.ListViewItemSorter = lvwColumnSorter;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -26,6 +32,7 @@ namespace Ortho4XP
             string zeile3 = "default_zl=";
             
             listViewKacheln.Items.Clear();
+
             List<string> dirs = new List<string>(Directory.EnumerateDirectories(textBoxPfad.Text));
                 
             foreach (var dir in dirs)
@@ -50,22 +57,52 @@ namespace Ortho4XP
                     }
                     else
                     {
+                        item.SubItems.Add(verzeichnisGroesse(dir));
                         listViewKacheln.Items.Add(item);
                         break;
                     }
                 }
                 file.Close();
-
-                string[] dateien = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
-                long bytes = 0;
-                foreach (string name in dateien)
-                {
-                    FileInfo info = new FileInfo(name);
-                    bytes += info.Length;
-                }
-                bytes = (bytes / 1024) / 1024;
-                item.SubItems.Add(bytes.ToString());
             }
+        }
+
+        string verzeichnisGroesse(string pfad)
+        {
+            string[] dateien = Directory.GetFiles(pfad, "*.*", SearchOption.AllDirectories);
+            long bytes = 0;
+            foreach (string name in dateien)
+            {
+                FileInfo info = new FileInfo(name);
+                bytes += info.Length;
+            }
+            bytes = (bytes / 1024) / 1024;
+            return bytes.ToString();
+        }
+
+        //sortierung: https://support.microsoft.com/de-de/help/319401/how-to-sort-a-listview-control-by-a-column-in-visual-c
+        private void listViewKacheln_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listViewKacheln.Sort();
         }
     }
 }
