@@ -34,6 +34,7 @@
             this.columnHeaderMap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderZommlevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxPfad = new System.Windows.Forms.TextBox();
+            this.columnHeaderGröße = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button1
@@ -51,7 +52,8 @@
             this.listViewKacheln.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderKachel,
             this.columnHeaderMap,
-            this.columnHeaderZommlevel});
+            this.columnHeaderZommlevel,
+            this.columnHeaderGröße});
             this.listViewKacheln.FullRowSelect = true;
             this.listViewKacheln.GridLines = true;
             this.listViewKacheln.Location = new System.Drawing.Point(12, 12);
@@ -64,17 +66,17 @@
             // columnHeaderKachel
             // 
             this.columnHeaderKachel.Text = "Kachel";
-            this.columnHeaderKachel.Width = 240;
+            this.columnHeaderKachel.Width = 180;
             // 
             // columnHeaderMap
             // 
             this.columnHeaderMap.Text = "Kartendienst";
-            this.columnHeaderMap.Width = 160;
+            this.columnHeaderMap.Width = 120;
             // 
             // columnHeaderZommlevel
             // 
             this.columnHeaderZommlevel.Text = "Zoomlevel";
-            this.columnHeaderZommlevel.Width = 100;
+            this.columnHeaderZommlevel.Width = 70;
             // 
             // textBoxPfad
             // 
@@ -82,6 +84,11 @@
             this.textBoxPfad.Name = "textBoxPfad";
             this.textBoxPfad.Size = new System.Drawing.Size(537, 20);
             this.textBoxPfad.TabIndex = 2;
+            // 
+            // columnHeaderGröße
+            // 
+            this.columnHeaderGröße.Text = "Verzeichnisgröße in MB";
+            this.columnHeaderGröße.Width = 140;
             // 
             // Form1
             // 
@@ -107,6 +114,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderMap;
         private System.Windows.Forms.ColumnHeader columnHeaderZommlevel;
         private System.Windows.Forms.TextBox textBoxPfad;
+        private System.Windows.Forms.ColumnHeader columnHeaderGröße;
     }
 }
 

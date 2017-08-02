@@ -55,7 +55,17 @@ namespace Ortho4XP
                     }
                 }
                 file.Close();
-            }          
+
+                string[] dateien = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
+                long bytes = 0;
+                foreach (string name in dateien)
+                {
+                    FileInfo info = new FileInfo(name);
+                    bytes += info.Length;
+                }
+                bytes = (bytes / 1024) / 1024;
+                item.SubItems.Add(bytes.ToString());
+            }
         }
     }
 }
